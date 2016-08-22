@@ -1,0 +1,18 @@
+8
+Taraz
+Almaty
+Astana
+Ust-kamenogorsk
+Semey
+Shymkent
+Atyrau
+Aktobe
+Taraz Almaty 500
+Almaty Astana 1000
+Ust-kamenogorsk Almaty 1000
+Astana Ust-kamenogorsk 500
+Shymkent Taraz 300
+Aktobe Astana 1000
+Aktobe Almaty 2200
+Semey Ust-kamenogorsk 200
+Atyrau Aktobe 500
