@@ -41,7 +41,47 @@ public class AVLTreeTest {
     binaryTree.add(7);
     binaryTree.print();
 
+    binaryTree.remove(21);
+    binaryTree.print();
 
+
+  }
+
+  @Test
+  public void testRemove() throws IOException {
+    BinaryTree<Integer> binaryTree = new AVLTree<>();
+    binaryTree.add(1);
+    binaryTree.add(3);
+    binaryTree.add(5);
+    binaryTree.add(7);
+    binaryTree.add(9);
+    binaryTree.add(12);
+    binaryTree.add(13);
+    binaryTree.add(15);
+    binaryTree.add(17);
+    binaryTree.add(19);
+    binaryTree.print();
+
+    binaryTree.remove(19);
+    binaryTree.print();
+    binaryTree.remove(13);
+    binaryTree.print();
+    binaryTree.remove(12);
+    binaryTree.print();
+    binaryTree.remove(15);
+    binaryTree.print();
+    binaryTree.remove(3);
+    binaryTree.print();
+    binaryTree.remove(7);
+    binaryTree.print();
+    binaryTree.remove(17);
+    binaryTree.print();
+    binaryTree.remove(5);
+    binaryTree.print();
+    binaryTree.remove(1);
+    binaryTree.print();
+    binaryTree.remove(9);
+    binaryTree.print();
   }
 
 }
