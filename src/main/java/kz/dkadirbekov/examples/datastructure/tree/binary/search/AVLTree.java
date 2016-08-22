@@ -23,15 +23,54 @@ public class AVLTree<T> extends BinarySearchTree<T> {
     Node newNode = super.add(data, node);
     Node imbalancedNode = this.getImbalancedNode(newNode);
     if (imbalancedNode != null) {
-      System.out.println("Before balance");
-      try {
-        this.print();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
       this.balance(imbalancedNode);
     }
     return newNode;
+  }
+
+  @Override
+  public void remove(Comparable<T> comparable) {
+    remove(getNode(), comparable);
+  }
+
+  /**
+   * {@inheritDoc}
+   * Also balance tree
+   */
+  @Override
+  public Node remove(Node node, Comparable<T> comparable) {
+    Node replacedWith = super.remove(node, comparable);
+
+    if (getNode() != null) {
+      Node imbalancedNode = this.findImbalancedNode(getNode());
+
+      if (imbalancedNode != null) {
+        this.balance(node);
+      }
+
+    }
+    return replacedWith;
+  }
+
+  private Node findImbalancedNode(Node node) {
+    if (node.getLeft() != null) {
+      Node left = findImbalancedNode(node.getLeft());
+      if (left != null) {
+        return left;
+      }
+    }
+    if (node.getRight() != null) {
+      Node right = findImbalancedNode(node.getRight());
+      if (right != null) {
+        return right;
+      }
+    }
+    node.setBalance(this.countBalance(node));
+    if (Math.abs(node.getBalance()) > 1) {
+      return node;
+    } else {
+      return null;
+    }
   }
 
   private Node getImbalancedNode(Node node) {
@@ -55,6 +94,10 @@ public class AVLTree<T> extends BinarySearchTree<T> {
   }
 
   private void balance(Node node, LinkedList<Rotation> rotations) {
+    if (node == null) {
+      return;
+    }
+
     int balance = node.getBalance();
 
     if (rotations.size() < 2) {
@@ -76,16 +119,7 @@ public class AVLTree<T> extends BinarySearchTree<T> {
 
     while (!rotations.isEmpty()) {
       Rotation rotation = rotations.removeFirst();
-      try {
-        System.out.println("Before rotation");
-        this.print();
-        rotate(node, rotation);
-        System.out.println("After rotation");
-        this.print();
-        System.out.println();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      rotate(node, rotation);
     }
 
   }

@@ -152,7 +152,29 @@ public abstract class BinaryTree<T> {
   }
 
   public void print() throws IOException {
-    node.printTree(new OutputStreamWriter(System.out));
+    if(node != null) {
+      node.printTree(new OutputStreamWriter(System.out));
+    } else {
+      System.out.println("Empty tree!!!");
+    }
   }
+
+  /**
+   * Removes the {@link Node} with data = {@link Comparable} from {@link BinaryTree} with node =
+   * {@code node}
+   *
+   * @param node {@link Node} top node
+   * @param data {@link Comparable}
+   * @return {@link Node} that was replaced instead of removed {@link}. Returns null if {@link Node}\
+   * was leaf.
+   */
+  protected abstract Node remove(Node node, Comparable<T> data);
+
+  /**
+   * Removes {@code data} from {@link BinaryTree}
+   *
+   * @param data data of {@link Node} to remove
+   */
+  public abstract void remove(Comparable<T> data);
 
 }
